@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prenotazioni Sanitarie</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Prenota Esame</h2>
+
+<form id="form">
+
+<input type="text" id="nome" placeholder="Nome" required>
+<input type="text" id="cognome" placeholder="Cognome" required>
+<input type="date" id="data_nascita" required>
+
+<select id="tipo_esame">
+    <option>Esofago-gastroduodenoscopia</option>
+    <option>Esofago-gastroduodenoscopia con biopsie</option>
+    <option>Colonscopia</option>
+    <option>Colonscopia con polipectomia</option>
+    <option>Colonscopia con biopsie</option>
+</select>
+
+<input type="date" id="data" required>
+<select id="orario"></select>
+
+<button type="submit">Prenota</button>
+
+</form>
+
+<h3>Prenotazioni</h3>
+<ul id="lista"></ul>
+
+<script src="script.js"></script>
+
+</body>
+</html>

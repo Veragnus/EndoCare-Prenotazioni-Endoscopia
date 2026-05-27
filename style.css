@@ -1,0 +1,42 @@
+body {
+    font-family: Arial;
+    background: linear-gradient(135deg, #4facfe, #a2d8db);
+    margin: 0;
+}
+
+h2, h3 {
+    text-align: center;
+    color: white;
+}
+
+form {
+    background: rgb(106, 106, 236);
+    padding: 20px;
+    margin: 30px auto;
+    width: 320px;
+    border-radius: 15px;
+}
+
+input, select, button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+button {
+    background: #4facfe;
+    color: white;
+    border: none;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    background: white;
+    margin: 10px auto;
+    padding: 10px;
+    width: 320px;
+}
