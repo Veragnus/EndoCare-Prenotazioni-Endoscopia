@@ -78,7 +78,8 @@ def get_prenotazioni():
 @app.route("/prenotazioni", methods=["POST"])
 def crea_prenotazione():
     data = request.json
-
+    
+# Verifica che la prenotazione non venga effettuata di domenica
     # controllo domenica
     giorno = datetime.strptime(data["data"], "%Y-%m-%d").weekday()
     if giorno == 6:
@@ -87,6 +88,7 @@ def crea_prenotazione():
     conn = sqlite3.connect(DB_NAME)
     c = conn.cursor()
 
+    # Verifica che lo slot selezionato non sia già occupato
     # controllo slot occupato
     c.execute("""
         SELECT * FROM prenotazioni
@@ -96,7 +98,8 @@ def crea_prenotazione():
     if c.fetchone():
         conn.close()
         return jsonify({"errore": "Slot già occupato"}), 400
-
+        
+# Creazione dell'oggetto Prenotazione secondo paradigma OOP
     # crea oggetto (OOP)
     p = Prenotazione(
         data["nome"],
@@ -107,6 +110,7 @@ def crea_prenotazione():
         data["orario"]
     )
 
+    # Salvataggio della prenotazione nel database SQLite
     # salva DB
     c.execute("""
         INSERT INTO prenotazioni (nome, cognome, data_nascita, tipo_esame, data, orario)
