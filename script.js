@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const today = new Date().toISOString().split("T")[0];
     inputData.setAttribute("min", today);
 
+    // Generazione automatica degli slot orari disponibili
     // genera orari
     for (let h = 9; h <= 17; h++) {
         selectOrario.innerHTML += `<option>${h}:00</option>`;
@@ -18,6 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
 
         console.log("CLICK OK"); // test
+
+        // Invio dei dati al backend tramite API REST
 
         const res = await fetch("http://127.0.0.1:5001/prenotazioni", {
             method: "POST",
@@ -43,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         caricaPrenotazioni();
     });
 
+    // Recupera tutte le prenotazioni registrate dal backend
     // carica lista
     async function caricaPrenotazioni() {
         const res = await fetch("http://127.0.0.1:5001/prenotazioni");
@@ -65,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Elimina una prenotazione e aggiorna la lista
     // elimina
     window.elimina = async function(id) {
         await fetch(`http://127.0.0.1:5001/prenotazioni/${id}`, {
